@@ -7,12 +7,16 @@ public class Player : MonoBehaviour {
 	public Transform playerSpawnPoints;
 	public bool respawn = false;
 
+
 	private Transform[] spawnPoints;
 	private bool lastToggle = false;
+
+
 
 	// Use this for initialization
 	void Start () {
 		spawnPoints = playerSpawnPoints.GetComponentsInChildren<Transform> ();
+
 
 	}
 	
@@ -22,6 +26,9 @@ public class Player : MonoBehaviour {
 			Respawn ();
 			lastToggle = respawn;
 		}
+
+
+
 	}
 
 	private void Respawn(){
