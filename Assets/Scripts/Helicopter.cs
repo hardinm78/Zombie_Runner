@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class Helicopter : MonoBehaviour {
 
-	public AudioClip radioCall;
-
-	private AudioSource audioSource;
-
-	//private AudioSource audioSource;	
+	
 	private bool called = false;
+	private Rigidbody rigi;
 
 	// Use this for initialization
 	void Start () {
-		audioSource = GetComponent<AudioSource> ();
+		rigi = GetComponent<Rigidbody> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		if(Input.GetButtonDown("CallHeli") && !called){
-			called = true;
-			audioSource.PlayOneShot (radioCall);
 
-		}
-
+	 void OnDispatchHelicopter(){		
+		rigi.velocity = new Vector3 (0, 0, 50f);
+		called = true;
 	}
+
 }

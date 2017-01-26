@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
 	public Transform playerSpawnPoints;
 	public bool respawn = false;
-
+	public GameObject landingAreaPrefab;
 
 	private Transform[] spawnPoints;
 	private bool lastToggle = false;
@@ -16,8 +16,6 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		spawnPoints = playerSpawnPoints.GetComponentsInChildren<Transform> ();
-
-
 	}
 	
 	// Update is called once per frame
@@ -32,9 +30,15 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Respawn(){
-
 		int i = Random.Range (1, spawnPoints.Length);
-
 		transform.position = spawnPoints [i].position;
+	}
+
+	void OnFindClearArea(){
+		Invoke ("DropFlare", 3f);
+	}
+
+	void DropFlare(){
+		Instantiate (landingAreaPrefab, transform.position, transform.rotation);
 	}
 }
